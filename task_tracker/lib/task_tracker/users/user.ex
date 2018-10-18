@@ -13,6 +13,7 @@ defmodule TaskTracker.Users.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:username])
+    |> unique_constraint(:username)
     |> validate_required([:username])
   end
 end

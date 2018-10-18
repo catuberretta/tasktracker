@@ -12,7 +12,8 @@ defmodule TaskTrackerWeb.TaskController do
 
   def new(conn, _params) do
     changeset = Tasks.change_task(%Task{})
-    render(conn, "new.html", changeset: changeset)
+    users = Users.list_users()
+    render(conn, "new.html", users: users, assignedTo: false, changeset: changeset)
   end
 
   def create(conn, %{"task" => task_params}) do
@@ -36,12 +37,13 @@ defmodule TaskTrackerWeb.TaskController do
     task = Tasks.get_task!(id)
     users = Users.list_users()
     changeset = Tasks.change_task(task)
-    render(conn, "edit.html", task: task, users: users, changeset: changeset)
+    render(conn, "edit.html", task: task, assignedTo: task.assignedTo.id, users: users, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "task" => task_params}) do
     task = Tasks.get_task!(id)
-
+    users = Users.list_users()
+    
     case Tasks.update_task(task, task_params) do
       {:ok, task} ->
         conn
@@ -49,7 +51,7 @@ defmodule TaskTrackerWeb.TaskController do
         |> redirect(to: Routes.task_path(conn, :show, task))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", task: task, changeset: changeset)
+        render(conn, "edit.html", task: task, users: users, changeset: changeset)
     end
   end
 

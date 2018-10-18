@@ -15,23 +15,20 @@
       <td><%= user.username %></td>
 
       <td>
-        <<%= link "Show", to: Routes.user_path(@conn, :show, user) %>
+        <%= link "Show", to: Routes.user_path(@conn, :show, user) %>
         <%= link "Edit", to: Routes.user_path(@conn, :edit, user) %>
-        <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>>
+        <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
+  <%# Allow user to register if there's no one logged in %>
   <div>
-
-  <%= if @current_user do %>
-           
-          <% else %>
-<span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
-
-          <% end %>
-            
+    <%= if @current_user do %>  
+    <% else %>
+      <span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
+    <% end %>        
   </div>
 

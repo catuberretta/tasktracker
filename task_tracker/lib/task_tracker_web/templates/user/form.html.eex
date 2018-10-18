@@ -14,4 +14,9 @@
     <%= text_input f, :username, class: "form-control" %>
     <%= error_tag f, :username %>
   </div>
+
+
+  <div>
+    <%= submit "Register", class: "btn btn-primary" %>
+  </div>
 <% end %>
