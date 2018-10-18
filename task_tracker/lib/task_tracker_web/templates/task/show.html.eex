@@ -8,7 +8,7 @@
   </li>
 
   <li>
-    <strong>Desc:</strong>
+    <strong>Description:</strong>
     <%= @task.desc %>
   </li>
 
@@ -18,12 +18,12 @@
   </li>
 
   <li>
-    <strong>Assigneduser:</strong>
+    <strong>User Assigned:</strong>
     <%= @task.assignedUser %>
   </li>
 
   <li>
-    <strong>Timespent:</strong>
+    <strong>Time Spent (in 15 min increments):</strong>
     <%= @task.timeSpent %>
   </li>
 
