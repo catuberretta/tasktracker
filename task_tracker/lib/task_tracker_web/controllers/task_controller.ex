@@ -13,7 +13,7 @@ defmodule TaskTrackerWeb.TaskController do
   def new(conn, _params) do
     changeset = Tasks.change_task(%Task{})
     users = Users.list_users()
-    render(conn, "new.html", users: users, assignedTo: false, changeset: changeset)
+    render(conn, "new.html", users: users, assignedTo: nil, changeset: changeset)
   end
 
   def create(conn, %{"task" => task_params}) do
@@ -24,7 +24,7 @@ defmodule TaskTrackerWeb.TaskController do
         |> redirect(to: Routes.task_path(conn, :show, task))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", assignedTo: nil, changeset: changeset, )
     end
   end
 

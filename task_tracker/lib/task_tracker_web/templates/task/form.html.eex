@@ -37,9 +37,7 @@
         <%= error_tag f, :timeSpent %>
       </div>
     <% end %>
-  
- 
-  <div>
-    <%= submit "Save" %>
-  </div>
+
+    <%= submit "Save", class: "btn btn-primary" %>
+
 <% end %>
