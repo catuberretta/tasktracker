@@ -30,9 +30,10 @@
     </div>
 
 
-  <%= if @current_user.id == @assignedTo do %>
+  <%= if @current_user.username == @assignedTo do %>
     <div class="form-group">
         <%= label f, :timeSpent %>
+            <p style="font-size: 10px;">Put time in 15 minute increments</p>
         <%= number_input f, :timeSpent, step: "15", class: "form-control" %>
         <%= error_tag f, :timeSpent %>
       </div>

@@ -37,7 +37,7 @@ defmodule TaskTrackerWeb.TaskController do
     task = Tasks.get_task!(id)
     users = Users.list_users()
     changeset = Tasks.change_task(task)
-    render(conn, "edit.html", task: task, assignedTo: task.assignedTo.id, users: users, changeset: changeset)
+    render(conn, "edit.html", task: task, assignedTo: task.assignedUser, users: users, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "task" => task_params}) do
