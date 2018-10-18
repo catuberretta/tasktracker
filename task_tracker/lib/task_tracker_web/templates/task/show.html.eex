@@ -22,7 +22,10 @@
     <%= @task.assignedUser %>
   </li>
 
-  
+  <li class="list-group-item">
+    <strong>Time Spent (in 15 min increments):</strong>
+    <%= @task.timeSpent %>
+  </li>
 
 </ul>
 

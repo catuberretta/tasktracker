@@ -19,6 +19,7 @@
       <td><%= task.desc %></td>
       <td><%= task.completed %></td>
       <td><%= task.assignedUser %></td>
+      <td><%= task.timeSpent %></td>
 
       <td>
         <%= link "Show", to: Routes.task_path(@conn, :show, task) %>
