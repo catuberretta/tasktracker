@@ -28,7 +28,9 @@
   <div>
     <%= if @current_user do %>  
     <% else %>
-      <span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
+      
+      <span><%= link "New User", to: Routes.user_path(@conn, :new) , class: "btn btn-outline-primary" %></span>
+
     <% end %>        
   </div>
 

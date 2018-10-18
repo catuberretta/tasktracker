@@ -31,7 +31,13 @@
         <div class="col-4">
           <%= if @current_user do %>
             <p class="my-3">
-              User: <%= @current_user.username %> |
+            <span class="badge badge-primary">
+              User: <%= @current_user.username %>
+              </span>
+               <span class="badge badge-primary">
+                User ID: <%= @current_user.id %>
+              </span>
+            |
               <%= link("Logout", to: Routes.session_path(@conn, :delete),
                 method: :delete) %>
             </p>
@@ -39,7 +45,7 @@
             <%= form_for @conn, Routes.session_path(@conn, :create),
                     [class: "form-inline"], fn f -> %>
               <%= text_input f, :username, class: "form-control" %>
-              <%= submit "Login", class: "btn btn-secondary" %>
+              <%= submit "Login", class: "btn btn-outline-secondary" %>
             <% end %>
           <% end %>
         </div>

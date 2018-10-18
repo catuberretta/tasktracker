@@ -19,7 +19,10 @@ defmodule TaskTracker.Tasks do
   """
   def list_tasks do
     Repo.all(Task)
+    # |> Repo.preload(:assignedUser)
   end
+
+
 
   @doc """
   Gets a single task.

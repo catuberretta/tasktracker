@@ -1,12 +1,14 @@
 <div class="row">
   <div class="col-12">
-    <h1>Welcome to Task Tracker</h1>
+    <h1 style="padding-top: 100px;">Welcome to Task Tracker</h1>
     <p> Have you ever wanted to track your tasks AND your peers', but despaired because there was no easy way to?</p>
     <h1 style="font-size: 20px;"> This is the future! </h1>
     <p> Focusing on <b> simple </b> and <b> minimalist </b> design, this was built to 
     not only create and track your own tasks, but also for your friends! Trello who?
     We hope you enjoy our easy-to-use, simple design. </p>
-    <h1>Task Your Tasks, Track Your Time, Track Your Life</h1>
-
+    <p> If you're a new user, go to <b> Users </b> and click <b> New User </b>.
+     If you've registered before, simply log in above! </p>
+    <h1 style="color:#2f7bf6;">Task Your Tasks, Track Your Time, Track Your Life</h1>
+    
   </div>
 </div>

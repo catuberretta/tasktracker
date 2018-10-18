@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Desc</th>
+      <th>Description</th>
       <th>Completed</th>
-      <th>Assigned User</th>
+      <th>Assigned User ID</th>
       <th>Timespent</th>
 
       <th></th>
@@ -36,7 +36,7 @@
   <%# Allow user to add a task if they are logged in %>
   <div>
     <%= if @current_user do %>  
-      <span><%= link "New Task", to: Routes.task_path(@conn, :new) %></span>
+      <span><%= link "New Task", to: Routes.task_path(@conn, :new) , class: "btn btn-outline-primary"%></span>
     <% else %>
     <p> Must be logged in </p>
     <% end %>        
