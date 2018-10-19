@@ -25,8 +25,8 @@
 
     <div class="form-group">
       <%= label f,"assign user" %>
-      <%= select f, :assignedUser, ["Catu", "Tina"]%>
-      <%= error_tag f, :assignedUser %>
+      <%= select f, :user, [1, 2, 3]%>
+      <%= error_tag f, :user %>
     </div>
 
 
