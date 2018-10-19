@@ -25,7 +25,7 @@
 
     <div class="form-group">
       <%= label f,"assign user" %>
-      <%= select f, :assignedUser, [1, 2, 3]%>
+      <%= select f, :assignedUser, Enum.map(TaskTracker.Users.list_users(), fn (u) -> u.id end)%>
       <%= error_tag f, :assignedUser %>
     </div>
 
