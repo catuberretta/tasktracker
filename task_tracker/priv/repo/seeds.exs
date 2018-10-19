@@ -12,6 +12,18 @@
 
 alias TaskTracker.Repo
 alias TaskTracker.Users.User
-
 Repo.insert!(%User{username: "Catu"})
-Repo.insert!(%User{username: "Tina"})
+Repo.insert!(%User{username: "Bob"})
+
+alias TaskTracker.Tasks.Task
+Repo.insert!(%Task{assignedUser: "Bob", 
+completed: false, 
+timeSpent: 60, 
+desc: "Create a database that works flawlessly.", 
+title: "DB Homework"})
+
+Repo.insert!(%Task{assignedUser: "Catu", 
+completed: false, 
+timeSpent: 15, 
+desc: "Paint it so it can be a pet.", 
+title: "Find a rock"})
