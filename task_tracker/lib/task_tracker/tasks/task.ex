@@ -4,7 +4,7 @@ defmodule TaskTracker.Tasks.Task do
 
 
   schema "tasks" do
-    field :assignedUser, :string
+    field :assignedUser, :integer
     field :completed, :boolean, default: false
     field :desc, :string
     field :timeSpent, :integer

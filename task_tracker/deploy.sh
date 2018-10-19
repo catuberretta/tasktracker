@@ -15,5 +15,6 @@ mix release --env=prod
 
 echo "Starting app..."
 
-_build/prod/rel/task_tracker/bin/task_tracker start
+_build/prod/rel/task_tracker/bin/task_tracker foreground
+
 
