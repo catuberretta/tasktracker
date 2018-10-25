@@ -5,15 +5,15 @@ defmodule TaskTracker.Users.User do
 
   schema "users" do
     field :username, :string
-
+    field :manager_id, :integer
     timestamps()
   end
 
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username])
+    |> cast(attrs, [:username, :manager_id])
     |> unique_constraint(:username)
-    |> validate_required([:username])
+    |> validate_required([:username, :manager_id])
   end
 end

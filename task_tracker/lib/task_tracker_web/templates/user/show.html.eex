@@ -1,12 +1,19 @@
 <h1>Show User</h1>
 
+ <p><strong>Username:</strong>
+    <%= @user.username %></p>
+
+   <p><strong>Manager:</strong>
+    <%= @user.manager_id %></p>
+
+   <p><strong>Underlings:</strong>
+
 <ul>
-
-  <li>
-    <strong>Username:</strong>
-    <%= @user.username %>
-  </li>
-
+  <%= Enum.map(TaskTracker.Users.list_users(), fn (u) -> %>
+        <li>
+        <%= if (u.manager_id == @current_user.id) do u.username end %>
+       </li>
+        <%= end)%>
 </ul>
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>

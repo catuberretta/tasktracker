@@ -25,12 +25,16 @@
 
     <div class="form-group">
       <%= label f,"assign user" %>
-      <%= select f, :assignedUser, Enum.map(TaskTracker.Users.list_users(), fn (u) -> u.id end)%>
+      <%= select f, :assignedUser, Enum.map(TaskTracker.Users.list_users(), fn (u) -> 
+      if (u.manager_id == @current_user.id) do
+          u.id 
+          end
+        end)%>
       <%= error_tag f, :assignedUser %>
     </div>
 
 
-  <%= if @current_user.username == @assignedTo do %>
+  <%= if @current_user.id == @assignedTo do %>
     <div class="form-group">
         <%= label f, :timeSpent %>
             <p style="font-size: 10px;">Put time in 15 minute increments</p>
@@ -38,16 +42,6 @@
         <%= error_tag f, :timeSpent %>
       </div>
     <% end %>
-
-  <ul class="list-group">
-    <%= for user <- @users do %>
-    <li class="list-group-item">
-    <%= user.id %> = 
-    <%= user.username %>
-    </li>
-    <% end %>
-	</ul>
-
     <%= submit "Save", class: "btn btn-outline-primary" %>
 
 <% end %>

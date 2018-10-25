@@ -13,6 +13,7 @@
     </tr>
   </thead>
   <tbody>
+
 <%= for task <- @tasks do %>
     <tr>
       <td><%= task.title %></td>
@@ -41,3 +42,47 @@
     <p> Must be logged in </p>
     <% end %>        
   </div>
+
+  <%# Code from Bootstrap https://getbootstrap.com/docs/4.0/components/collapse/ %>
+<div style="padding-top:100px;">
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Task Report
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+<p> This is your task report. You will be able to your underlings' tasks and their status.</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Completed</th>
+      <th></th>
+    </tr>
+  </thead>
+  
+
+  <%= Enum.map(TaskTracker.Users.list_users(), fn (u) -> %>
+    <%= if (u.manager_id == @current_user.id) do %>
+
+    <%= for task <- @tasks do %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.desc %></td>
+      <td><%= task.completed %></td>
+      <td> <%= u.username %></td>
+    </tr>
+<% end %>
+    
+     <%= end %>
+  <%= end)%>
+
+
+  </div>
+</div>
+</div>
+
+
+
