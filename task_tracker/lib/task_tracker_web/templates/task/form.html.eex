@@ -1,3 +1,35 @@
+     <%= if @edit do %>
+
+    <div style="padding-bottom: 30xp;">
+    <p> Track the time you spend on a task </p>
+    <button id="start-time-button" data-task-id="<%= @task.id %>" class="btn btn-success">Start working</button>
+    <button id="end-time-button"  data-task-id="<%= @task.id %>" class="btn btn-danger">Stop working</button>
+    </div>
+
+  <div style="padding-top: 30px;">
+    
+   <table class="table">
+      <tr>
+        <th>Task Began</th>
+        <th>Task Ended</th>
+        <th>Edit Time</th>
+        <th>Delete</th>
+      </tr>
+    <%= for timeBlock <- @task.timeblocks do %>
+      <%= if timeBlock.task_id == @task.id do %>
+      <tr>
+      <td> <%= timeBlock.start_time %> </td>
+      <td> <%= timeBlock.end_time %> </td>
+      <td> <button id="edit-time-button" class="btn btn-outline-secondary"> Edit </button> </td>
+      <td> <button id="delete-time-button" onclick="window.deleteTimeBlock(this)" data-time-block-id="<%= timeBlock.id %>" class="btn btn-outline-secondary"> Delete </button> </td>
+      </tr>
+      <% end %>
+    <% end %>
+    </table>
+    </div>
+    <% end %>
+
+
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
@@ -26,22 +58,18 @@
     <div class="form-group">
       <%= label f,"assign user" %>
       <%= select f, :assignedUser, Enum.map(TaskTracker.Users.list_users(), fn (u) -> 
-      if (u.manager_id == @current_user.id) do
+      if (u.manager_id == @current_user.id || u.id) do
           u.id 
           end
         end)%>
+
       <%= error_tag f, :assignedUser %>
     </div>
 
 
-  <%= if @current_user.id == @assignedTo do %>
-    <div class="form-group">
-        <%= label f, :timeSpent %>
-            <p style="font-size: 10px;">Put time in 15 minute increments</p>
-        <%= number_input f, :timeSpent, step: "15", class: "form-control" %>
-        <%= error_tag f, :timeSpent %>
-      </div>
-    <% end %>
+
+
+
     <%= submit "Save", class: "btn btn-outline-primary" %>
 
 <% end %>

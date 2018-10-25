@@ -23,11 +23,12 @@
   </li>
 
   <li class="list-group-item">
-    <strong>Time Spent (in 15 min increments):</strong>
-    <%= @task.timeSpent %>
+    <strong>Time Spent:</strong>
+    <%= total_time(@task) %>
   </li>
 
 </ul>
+
 
 
 <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span>

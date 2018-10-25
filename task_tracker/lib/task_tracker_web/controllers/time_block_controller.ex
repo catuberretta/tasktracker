@@ -12,11 +12,15 @@ defmodule TaskTrackerWeb.TimeBlockController do
   end
 
   def create(conn, %{"time_block" => time_block_params}) do
-    with {:ok, %TimeBlock{} = time_block} <- TimeBlocks.create_time_block(time_block_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.time_block_path(conn, :show, time_block))
-      |> render("show.json", time_block: time_block)
+    case TimeBlocks.create_time_block(time_block_params) do
+      {:ok, time_block} ->
+        IO.puts"SUCCESSFUL"
+        conn
+        |> put_status(:created)
+        |> put_resp_header("location", Routes.time_block_path(conn, :show, time_block))
+        |> render("show.json", time_block: time_block)
+      {other_status, reason} ->
+        IO.inspect("GOT OTHER STATUS: #{other_status} #{reason}")
     end
   end
 

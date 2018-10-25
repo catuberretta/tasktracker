@@ -50,6 +50,7 @@ environment :prod do
   set include_erts: true
   set include_src: false
   set cookie: String.to_atom(get_secret.("prod_cookie"))
+  
 end
 
 # You may define one or more releases in this file.

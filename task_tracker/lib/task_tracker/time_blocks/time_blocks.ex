@@ -35,6 +35,7 @@ defmodule TaskTracker.TimeBlocks do
       ** (Ecto.NoResultsError)
 
   """
+
   def get_time_block!(id), do: Repo.get!(TimeBlock, id)
 
   @doc """
