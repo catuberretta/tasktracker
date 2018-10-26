@@ -18,16 +18,51 @@
     <%= for timeBlock <- @task.timeblocks do %>
       <%= if timeBlock.task_id == @task.id do %>
       <tr>
-      <td> <%= timeBlock.start_time %> </td>
-      <td> <%= timeBlock.end_time %> </td>
-      <td> <button id="edit-time-button" class="btn btn-outline-secondary"> Edit </button> </td>
-      <td> <button id="delete-time-button" onclick="window.deleteTimeBlock(this)" data-time-block-id="<%= timeBlock.id %>" class="btn btn-outline-secondary"> Delete </button> </td>
+        <td> 
+          <span id="startSet<%= timeBlock.id %>"><%= timeBlock.start_time %> </span>
+          <span id="startInput<%= timeBlock.id %>" style="display: none;"> 
+            <input id="newStart<%= timeBlock.id %>" type="datetime-local" novalidate>
+          </span>
+        </td>
+
+        <td id="<%= timeBlock.id%>starttd"> 
+          <span id="endSet<%= timeBlock.id%>"><%= timeBlock.end_time %> </span>
+          <span id="endInput<%= timeBlock.id%>" style="display: none;"> 
+            <input id="endStart<%=timeBlock.id %>"  type="datetime-local" novalidate>
+          </span>
+        </td>
+
+        <td id="<%= timeBlock.id%>endtd"> 
+          <span id="editButton<%= timeBlock.id%>"> 
+              <button 
+              data-timeblock-id="<%= timeBlock.id %>"
+               id="edit-time-button" onclick=window.editTimeBlock(this) class="btn btn-outline-secondary"> 
+              Edit </button> 
+            </span>
+
+
+          <span id="saveButton<%= timeBlock.id%>" style="display: none;"> 
+            <button 
+            data-task-id="<%= @task.id %>" 
+            data-timeblock-id="<%= timeBlock.id %>"
+            id="save-time-button" 
+            onclick=window.saveTimeBlock(this) class="btn btn-outline-secondary"> 
+            Save </button> 
+          </span>
+        </td>
+
+        <td> 
+          <button id="delete-time-button" onclick="window.deleteTimeBlock(this)" 
+          data-timeblock-id="<%= timeBlock.id %>" class="btn btn-outline-secondary">
+          Delete </button> 
+        </td>
       </tr>
       <% end %>
     <% end %>
     </table>
     </div>
     <% end %>
+
 
 
 <%= form_for @changeset, @action, fn f -> %>
@@ -65,10 +100,6 @@
 
       <%= error_tag f, :assignedUser %>
     </div>
-
-
-
-
 
     <%= submit "Save", class: "btn btn-outline-primary" %>
 
