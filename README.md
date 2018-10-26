@@ -7,3 +7,5 @@ For Track Trasker 2.0, we now have managers! Now a manager can see a task report
 In order for a user to track their time, they can simply click the START TIME button and once they're done, click END TIME. This is a way to capture authentically how much time they spent on a task. They are also able to capture this if they work on intervals. By seeing at what times they've started and ended upon several work sessions, they can perhaps pick up on patterns and see exactly when they worked on the task. 
 
 When designing the database, I wanted the tracking of users to be as simple as possible which is why the user table has one field: username. Since the relationship between a user and tasks was one to many, each task had a field that was associated to a user id to keep track of who it was assigned to. The website uses user ID's as a way to track users more than usernames to make sure there was no ambiguity between users.
+
+I hope you enjoy this app and get as much satisfaction as I got suffering. 
